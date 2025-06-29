@@ -287,7 +287,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         <option value="<?php echo $room['id']; ?>" 
                                                 <?php echo (isset($_POST['room_id']) && $_POST['room_id'] == $room['id']) ? 'selected' : ''; ?>>
                                             <?php echo htmlspecialchars($room['room_type']); ?> - Room <?php echo htmlspecialchars($room['room_number']); ?> 
-                                            ($<?php echo number_format($room['price_per_night'], 2); ?>/night)
+                                            (₱<?php echo number_format($room['price_per_night'], 2); ?>/night)
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
@@ -347,7 +347,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <td><?php echo htmlspecialchars($room['room_number']); ?></td>
                                 <td><?php echo htmlspecialchars($room['room_type']); ?></td>
                                 <td><?php echo htmlspecialchars($room['capacity']); ?> guests</td>
-                                <td>$<?php echo number_format($room['price_per_night'], 2); ?></td>
+                                <td>₱<?php echo number_format($room['price_per_night'], 2); ?></td>
                                 <td>
                                     <span class="badge badge-success">Available</span>
                                 </td>
