@@ -269,7 +269,7 @@ $hotel = $stmt->fetch();
                                 </td>
                                 <td><?php echo htmlspecialchars($room['room_type']); ?></td>
                                 <td><?php echo htmlspecialchars($room['capacity']); ?> guests</td>
-                                <td>$<?php echo number_format($room['price_per_night'], 2); ?></td>
+                                <td>₱<?php echo number_format($room['price_per_night'], 2); ?></td>
                                 <td>
                                     <span class="badge badge-<?php echo $room['is_available'] ? 'success' : 'danger'; ?>">
                                         <?php echo $room['is_available'] ? 'Available' : 'Occupied'; ?>
