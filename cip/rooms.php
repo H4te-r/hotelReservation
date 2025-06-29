@@ -138,7 +138,7 @@ $rooms = $stmt->fetchAll();
 
         .room-image {
             height: 250px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
