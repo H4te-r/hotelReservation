@@ -551,4 +551,124 @@ ul {
 .btn.py-3 {
     padding-top: 1rem;
     padding-bottom: 1rem;
+}
+
+/* Quick Actions Grid */
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5em;
+    padding: 1.5em;
+}
+
+.quick-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em 1.5em;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-height: 120px;
+}
+
+.quick-action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    color: white;
+    text-decoration: none;
+}
+
+.quick-action-btn i {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.quick-action-btn span {
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.quick-action-btn.btn-primary {
+    background: linear-gradient(135deg, #516b5d 0%, #3c443f 100%);
+}
+
+.quick-action-btn.btn-secondary {
+    background: linear-gradient(135deg, #5b4b5b 0%, #846f84 100%);
+}
+
+.quick-action-btn.btn-success {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+/* Quick Actions Flex Layout */
+.quick-actions-flex {
+    display: flex;
+    gap: 1.5em;
+    padding: 1.5em;
+    justify-content: space-between;
+}
+
+.quick-action-btn {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em 1.5em;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-height: 120px;
+    margin: 0;
+}
+
+.quick-action-btn:not(:last-child) {
+    /* Remove right margin, use gap instead */
+}
+
+.quick-action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    color: white;
+    text-decoration: none;
+}
+
+.quick-action-btn i {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.quick-action-btn span {
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.quick-action-btn.btn-primary {
+    background: linear-gradient(135deg, #516b5d 0%, #3c443f 100%);
+}
+
+.quick-action-btn.btn-secondary {
+    background: linear-gradient(135deg, #5b4b5b 0%, #846f84 100%);
+}
+
+.quick-action-btn.btn-success {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+@media (max-width: 900px) {
+    .quick-actions-flex {
+        flex-direction: column;
+        gap: 1em;
+        padding: 1em;
+    }
+    .quick-action-btn {
+        min-width: 0;
+        width: 100%;
+    }
 } 
