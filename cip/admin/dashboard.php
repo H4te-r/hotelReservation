@@ -185,7 +185,7 @@ $hotel = $stmt->fetch();
                     <h3 class="card-title">Recent Reservations</h3>
                 </div>
                 <?php
-                $stmt = $pdo->query("SELECT * FROM reservations ORDER BY created_at DESC LIMIT 5");
+                $stmt = $pdo->query("SELECT r.*, rm.room_type FROM reservations r LEFT JOIN rooms rm ON r.room_id = rm.id ORDER BY r.created_at DESC LIMIT 5");
                 $recentReservations = $stmt->fetchAll();
                 ?>
                 <div class="table-responsive">
@@ -205,7 +205,15 @@ $hotel = $stmt->fetch();
                             <tr>
                                 <td><?php echo htmlspecialchars($reservation['booking_id']); ?></td>
                                 <td><?php echo htmlspecialchars($reservation['guest_name']); ?></td>
-                                <td><?php echo htmlspecialchars($reservation['room_type']); ?></td>
+                                <td>
+                                    <?php
+                                        if (!empty($reservation['room_type'])) {
+                                            echo htmlspecialchars($reservation['room_type']);
+                                        } else {
+                                            echo '<span class="text-muted">N/A</span>';
+                                        }
+                                    ?>
+                                </td>
                                 <td><?php echo date('M d, Y', strtotime($reservation['check_in_date'])); ?></td>
                                 <td><?php echo date('M d, Y', strtotime($reservation['check_out_date'])); ?></td>
                                 <td>
