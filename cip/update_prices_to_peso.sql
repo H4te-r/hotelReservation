@@ -1,15 +1,15 @@
--- Update room prices to Philippine Peso
--- Standard Rooms: ₱8,500 per night
-UPDATE rooms SET price_per_night = 8500.00 WHERE room_type = 'Standard Room';
+-- Update room prices to Philippine Peso (Realistic Luxury Hotel Rates)
+-- Standard Rooms: ₱5,000 per night (lowest price)
+UPDATE rooms SET price_per_night = 5000.00 WHERE room_type = 'Standard Room';
 
--- Deluxe Rooms: ₱12,500 per night  
-UPDATE rooms SET price_per_night = 12500.00 WHERE room_type = 'Deluxe Room';
+-- Deluxe Rooms: ₱8,500 per night  
+UPDATE rooms SET price_per_night = 8500.00 WHERE room_type = 'Deluxe Room';
 
--- Suites: ₱18,500 per night
-UPDATE rooms SET price_per_night = 18500.00 WHERE room_type = 'Suite';
+-- Suites: ₱15,000 per night
+UPDATE rooms SET price_per_night = 15000.00 WHERE room_type = 'Suite';
 
--- Presidential Suite: ₱35,000 per night
-UPDATE rooms SET price_per_night = 35000.00 WHERE room_type = 'Presidential Suite';
+-- Presidential Suite: ₱25,000 per night
+UPDATE rooms SET price_per_night = 25000.00 WHERE room_type = 'Presidential Suite';
 
 -- Update existing reservation total prices to reflect new room prices
 -- This will recalculate based on the number of nights
