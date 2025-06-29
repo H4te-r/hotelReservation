@@ -92,7 +92,6 @@ $availableRooms = $stmt->fetch()['available_rooms'];
       }
 
       .hero-overlay {
-        background-color: rgba(60, 68, 63, 0.7);
         height: 100%;
         display: flex;
         flex-direction: column;
