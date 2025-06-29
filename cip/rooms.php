@@ -51,7 +51,28 @@ $rooms = $stmt->fetchAll();
         .logo {
             font-family: 'League Spartan', sans-serif;
             font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
             color: #ffffff;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        .logo-text {
+            color: #ffffff;
+            text-decoration: none;
         }
 
         .nav-links {
@@ -240,7 +261,10 @@ $rooms = $stmt->fetchAll();
 <body>
     <!-- Navigation -->
     <header class="navbar">
-        <div class="logo"><?php echo htmlspecialchars($hotel['name']); ?></div>
+        <a href="index.php" class="logo">
+            <img src="assets/images/logo.png" alt="Hotel Logo">
+            <span class="logo-text"><?php echo htmlspecialchars($hotel['name']); ?></span>
+        </a>
         <nav>
             <ul class="nav-links">
                 <li><a href="index.php">Home</a></li>
@@ -283,7 +307,7 @@ $rooms = $stmt->fetchAll();
                             <span class="feature">AC</span>
                         <?php endif; ?>
                     </div>
-                    <div class="room-price">$<?php echo number_format($room['price_per_night']); ?>/night</div>
+                    <div class="room-price">₱<?php echo number_format($room['price_per_night']); ?>/night</div>
                     <a href="bookingform.php?room_id=<?php echo $room['id']; ?>" class="btn-book-room">Book This Room</a>
                 </div>
             </div>

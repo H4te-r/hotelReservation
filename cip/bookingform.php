@@ -154,7 +154,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     .logo {
       font-family: 'League Spartan', sans-serif;
       font-size: 1.5em;
-      color: #fff;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: bold;
+      transition: opacity 0.3s ease;
+    }
+    .logo:hover {
+      opacity: 0.8;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
+      margin-right: 10px;
+      border-radius: 5px;
+    }
+    .logo-text {
+      color: #ffffff;
+      text-decoration: none;
     }
     .nav-links {
       display: flex;
@@ -291,7 +309,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <body>
     <!-- Header -->
     <header class="navbar">
-      <div class="logo"><?php echo htmlspecialchars($hotel['name']); ?></div>
+      <a href="index.php" class="logo">
+        <img src="assets/images/logo.png" alt="Hotel Logo">
+        <span class="logo-text"><?php echo htmlspecialchars($hotel['name']); ?></span>
+      </a>
       <nav>
         <ul class="nav-links">
           <li>
@@ -354,7 +375,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                       data-capacity="<?php echo $room['capacity']; ?>"
                       <?php echo (isset($_POST['room_id']) && $_POST['room_id'] == $room['id']) || 
                                 (isset($_GET['room_id']) && $_GET['room_id'] == $room['id']) ? 'selected' : ''; ?>>
-                <?php echo htmlspecialchars($room['name']); ?> - $<?php echo number_format($room['price_per_night']); ?>/night
+                <?php echo htmlspecialchars($room['name']); ?> - ₱<?php echo number_format($room['price_per_night']); ?>/night
               </option>
             <?php endforeach; ?>
           </select>
@@ -383,7 +404,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           const capacity = selectedOption.getAttribute('data-capacity');
           roomDetails.innerHTML = `
             <strong>Room Details:</strong><br>
-            Price: $${parseInt(price).toLocaleString()}/night<br>
+            Price: ₱${parseInt(price).toLocaleString()}/night<br>
             Capacity: ${capacity} guests
           `;
           roomDetails.style.display = 'block';

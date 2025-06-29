@@ -144,6 +144,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="sidebar-header">
+                <a href="../index.php" class="logo">
+                    <img src="../assets/images/logo.png" alt="Hotel Logo">
+                    <span class="logo-text"><?php echo htmlspecialchars($hotel['name']); ?></span>
+                </a>
                 <h3><i class="fas fa-hotel"></i> Admin Panel</h3>
             </div>
             <nav class="sidebar-nav">

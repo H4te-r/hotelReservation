@@ -87,6 +87,10 @@ $hotel = $stmt->fetch();
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="sidebar-header">
+                <a href="../index.php" class="logo">
+                    <img src="../assets/images/logo.png" alt="Hotel Logo">
+                    <span class="logo-text"><?php echo htmlspecialchars($hotel['name']); ?></span>
+                </a>
                 <h3><i class="fas fa-hotel"></i> Admin Panel</h3>
             </div>
             <nav class="sidebar-nav">
@@ -208,7 +212,7 @@ $hotel = $stmt->fetch();
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label">Price per Night ($)</label>
+                                    <label class="form-label">Price per Night (₱)</label>
                                     <input type="number" name="price_per_night" class="form-control" step="0.01"
                                            value="<?php echo $editRoom ? htmlspecialchars($editRoom['price_per_night']) : ''; ?>" required>
                                 </div>

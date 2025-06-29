@@ -72,6 +72,10 @@ $hotel = $stmt->fetch();
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="sidebar-header">
+                <a href="../index.php" class="logo">
+                    <img src="../assets/images/logo.png" alt="Hotel Logo">
+                    <span class="logo-text"><?php echo htmlspecialchars($hotel['name']); ?></span>
+                </a>
                 <h3><i class="fas fa-hotel"></i> Admin Panel</h3>
             </div>
             <nav class="sidebar-nav">
@@ -213,7 +217,7 @@ $hotel = $stmt->fetch();
                                 <td><?php echo date('M d, Y', strtotime($reservation['check_in_date'])); ?></td>
                                 <td><?php echo date('M d, Y', strtotime($reservation['check_out_date'])); ?></td>
                                 <td><?php echo htmlspecialchars($reservation['num_guests']); ?></td>
-                                <td>$<?php echo number_format($reservation['total_price'], 2); ?></td>
+                                <td>₱<?php echo number_format($reservation['total_price'], 2); ?></td>
                                 <td>
                                     <span class="badge badge-<?php 
                                         echo $reservation['status'] === 'confirmed' ? 'success' : 

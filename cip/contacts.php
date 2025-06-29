@@ -1,9 +1,18 @@
+<?php
+require_once 'config/database.php';
+
+$pdo = getDBConnection();
+
+// Get hotel information
+$stmt = $pdo->query("SELECT * FROM hotel LIMIT 1");
+$hotel = $stmt->fetch();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us - Grand Plaza Hotel</title>
+  <title>Contact Us - <?php echo htmlspecialchars($hotel['name']); ?></title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=League+Spartan&family=Poppins&display=swap" rel="stylesheet"/>
   <style>
@@ -33,7 +42,28 @@
     .logo {
       font-family: 'League Spartan', sans-serif;
       font-size: 1.5em;
-      color: #fff;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: bold;
+      transition: opacity 0.3s ease;
+    }
+
+    .logo:hover {
+      opacity: 0.8;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+      margin-right: 10px;
+      border-radius: 5px;
+    }
+
+    .logo-text {
+      color: #ffffff;
+      text-decoration: none;
     }
     .nav-links {
       display: flex;
@@ -152,7 +182,10 @@
 <body>
   <!-- Navigation Bar -->
   <header class="navbar">
-    <div class="logo">Grand Plaza Hotel</div>
+    <a href="index.php" class="logo">
+      <img src="assets/images/logo.png" alt="Hotel Logo">
+      <span class="logo-text"><?php echo htmlspecialchars($hotel['name']); ?></span>
+    </a>
     <nav>
       <ul class="nav-links">
         <li><a href="index.php">Home</a></li>
@@ -199,7 +232,7 @@
   </div>
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Grand Plaza Hotel. All Rights Reserved.</p>
+    <p>&copy; 2025 <?php echo htmlspecialchars($hotel['name']); ?>. All Rights Reserved.</p>
   </footer>
 </body>
 </html>
