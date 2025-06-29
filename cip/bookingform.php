@@ -144,35 +144,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         margin-top: 1em;
       }
 
-      /* Navbar */
-      .navbar {
-        background-color: #846f84;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1em 2em;
-      }
-
-      .logo {
-        font-family: 'League Spartan', sans-serif;
-        font-size: 1.5em;
-        color: #ffffff;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 1.5em;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .nav-links li a {
-        color: #ffffff;
-        font-weight: 600;
-        text-decoration: none;
-      }
-
+      /* Navbar */    .navbar {
+      background-color: #846f84;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+    }
+    .logo {
+      font-family: 'League Spartan', sans-serif;
+      font-size: 1.5em;
+      color: #fff;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5em;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li a {
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.3em 0.7em;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .nav-links li a.active,
+    .nav-links li a:hover {
+      background: #5b4b5b;
+      color: #fff;
+    }
+    
       /* Message styles */
       .message {
         padding: 1em;
@@ -294,13 +298,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="index.php">Home</a>
           </li>
           <li>
-            <a href="#">About us</a>
+            <a href="aboutus.php">About us</a>
           </li>
           <li>
             <a href="rooms.php">Rooms</a>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <a href="contacts.php">Contact</a>
           </li>
         </ul>
       </nav>
