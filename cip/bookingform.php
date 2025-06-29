@@ -310,8 +310,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Header -->
     <header class="navbar">
       <a href="index.php" class="logo">
-        <img src="assets/images/logo.png" alt="Hotel Logo">
-        <span class="logo-text"><?php echo htmlspecialchars($hotel['name']); ?></span>
+        <img src="assets/images/logo.png" alt="Hotel Logo" style="height: 50px; width: auto;">
+        <!-- <span class="logo-text"><?php echo htmlspecialchars($hotel['name']); ?></span> -->
       </a>
       <nav>
         <ul class="nav-links">
