@@ -530,4 +530,25 @@ ul {
 
 .gap-1 { gap: 0.5em; }
 .gap-2 { gap: 1em; }
-.gap-3 { gap: 1.5em; } 
+.gap-3 { gap: 1.5em; }
+.gap-4 { gap: 2em; }
+
+/* Grid spacing */
+.g-4 {
+    gap: 2em;
+}
+
+/* Quick Actions button improvements */
+.btn.w-100 {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    min-height: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn.py-3 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+} 

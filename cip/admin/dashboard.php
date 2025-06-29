@@ -159,25 +159,25 @@ $hotel = $stmt->fetch();
             </div>
 
             <!-- Quick Actions -->
-            <div class="card py-3">
+            <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Quick Actions</h3>
                 </div>
-                <div class="row">
+                <div class="row g-4">
                     <div class="col-md-4">
-                        <a href="add_reservation.php" class="btn btn-primary d-flex align-items-center gap-2">
+                        <a href="add_reservation.php" class="btn btn-primary d-flex align-items-center gap-2 w-100 py-3">
                             <i class="fas fa-plus-circle"></i>
                             Add New Reservation
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a href="reservations.php" class="btn btn-secondary d-flex align-items-center gap-2">
+                        <a href="reservations.php" class="btn btn-secondary d-flex align-items-center gap-2 w-100 py-3">
                             <i class="fas fa-calendar-check"></i>
                             View All Reservations
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a href="rooms.php" class="btn btn-success d-flex align-items-center gap-2">
+                        <a href="rooms.php" class="btn btn-success d-flex align-items-center gap-2 w-100 py-3">
                             <i class="fas fa-bed"></i>
                             Manage Rooms
                         </a>
