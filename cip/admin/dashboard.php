@@ -159,7 +159,7 @@ $hotel = $stmt->fetch();
             </div>
 
             <!-- Quick Actions -->
-            <div class="card">
+            <div class="card py-3">
                 <div class="card-header">
                     <h3 class="card-title">Quick Actions</h3>
                 </div>
