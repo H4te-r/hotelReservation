@@ -3,6 +3,12 @@
 CREATE DATABASE IF NOT EXISTS hotel_reservation_system;
 USE hotel_reservation_system;
 
+-- Drop existing tables if they exist (for fresh start)
+DROP TABLE IF EXISTS reservations;
+DROP TABLE IF EXISTS rooms;
+DROP TABLE IF EXISTS admin_users;
+DROP TABLE IF EXISTS hotel;
+
 -- Single hotel table
 CREATE TABLE hotel (
     id INT AUTO_INCREMENT PRIMARY KEY,
