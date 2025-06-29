@@ -262,7 +262,7 @@ $rooms = $stmt->fetchAll();
     <!-- Navigation -->
     <header class="navbar">
         <a href="index.php" class="logo">
-            <img src="assets/images/logo.png" alt="Hotel Logo">
+            <img src="assets/images/logo.png" alt="Hotel Logo" >
             <!--<span class="logo-text"><?php echo htmlspecialchars($hotel['name']); ?></span>-->
         </a>
         <nav>

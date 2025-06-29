@@ -37,8 +37,8 @@ $hotel = $stmt->fetch();
         <div class="sidebar">
             <div class="sidebar-header">
                 <a href="../index.php" class="logo">
-                    <img src="../assets/images/logo.png" alt="Hotel Logo">
-                    <span class="logo-text"><?php echo htmlspecialchars($hotel['name']); ?></span>
+                    <img src="../assets/images/logo.png" alt="Hotel Logo" style="height: 60px; width: auto;">
+                    <!-- <span class="logo-text"><?php echo htmlspecialchars($hotel['name']); ?></span> -->
                 </a>
                 <h3><i class="fas fa-hotel"></i> Admin Panel</h3>
             </div>
