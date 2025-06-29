@@ -78,12 +78,7 @@ $hotel = $stmt->fetch();
                         Add Reservation
                     </a>
                 </div>
-                <div class="nav-item">
-                    <a href="users.php" class="nav-link">
-                        <i class="fas fa-users"></i>
-                        Users
-                    </a>
-                </div>
+                
                 <div class="nav-divider"></div>
                 <div class="nav-item">
                     <a href="?logout=1" class="nav-link">
