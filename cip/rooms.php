@@ -39,7 +39,7 @@ $rooms = $stmt->fetchAll();
             font-family: 'Libre Baskerville', sans-serif;
         }
 
-        /* Navbar */
+        /* Navbar - Consistent with index.php */
         .navbar {
             background-color: #846f84;
             display: flex;
@@ -55,25 +55,25 @@ $rooms = $stmt->fetchAll();
         }
 
         .nav-links {
-        display: flex;
-        gap: 1.5em;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      .nav-links li a {
-        font-weight: 600;
-        color: #fff;
-        text-decoration: none;
-        padding: 0.3em 0.7em;
-        border-radius: 4px;
-        transition: background 0.2s;
-      }
-      .nav-links li a.active,
-      .nav-links li a:hover {
-        background: #5b4b5b;
-        color: #fff;
-      }
+            display: flex;
+            gap: 1.5em;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links li a {
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.3em 0.7em;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .nav-links li a.active,
+        .nav-links li a:hover {
+            background: #5b4b5b;
+            color: #fff;
+        }
 
         .btn-primary {
             background-color: #516b5d;
@@ -90,13 +90,18 @@ $rooms = $stmt->fetchAll();
             background-color: #3c443f;
         }
 
-        /* Header Section */
+        /* Header Section - Consistent height with index.php hero */
         .header-section {
-            background: linear-gradient(rgba(60, 68, 63, 0.8), rgba(60, 68, 63, 0.8)), 
-                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
-            color: white;
+            background: linear-gradient(rgba(60, 68, 63, 0.7), rgba(60, 68, 63, 0.7)), 
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            height: 80vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 4em 2em;
+            color: white;
         }
 
         .header-section h1 {
@@ -106,8 +111,8 @@ $rooms = $stmt->fetchAll();
 
         .header-section p {
             font-size: 1.2em;
+            margin: 1em 0;
             max-width: 600px;
-            margin: 0 auto;
         }
 
         /* Rooms Grid */
@@ -213,6 +218,10 @@ $rooms = $stmt->fetchAll();
 
         /* Responsive */
         @media (max-width: 768px) {
+            .header-section {
+                height: 60vh;
+            }
+            
             .header-section h1 {
                 font-size: 2em;
             }
@@ -287,4 +296,4 @@ $rooms = $stmt->fetchAll();
         <p>&copy; 2025 <?php echo htmlspecialchars($hotel['name']); ?>. All Rights Reserved.</p>
     </footer>
 </body>
-</html> 
+</html>

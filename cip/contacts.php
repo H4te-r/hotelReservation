@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us - Grand Plaza Hotel</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Poppins&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=League+Spartan&family=Poppins&display=swap" rel="stylesheet"/>
   <style>
     body {
       margin: 0;
@@ -21,6 +21,8 @@
       margin: 0 auto;
       padding: 0 2em;
     }
+    
+    /* Navbar - Consistent with index.php */
     .navbar {
       background-color: #846f84;
       display: flex;
@@ -29,11 +31,9 @@
       padding: 1em 2em;
     }
     .logo {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 1.7em;
+      font-family: 'League Spartan', sans-serif;
+      font-size: 1.5em;
       color: #fff;
-      letter-spacing: 1px;
-      font-weight: bold;
     }
     .nav-links {
       display: flex;
@@ -55,32 +55,30 @@
       background: #5b4b5b;
       color: #fff;
     }
+    
+    /* Header Section - Consistent height with index.php hero */
     .header-section {
-      width: 100vw;
+      background: linear-gradient(rgba(60, 68, 63, 0.7), rgba(60, 68, 63, 0.7)), 
+                  url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+      height: 80vh;
       position: relative;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      background: linear-gradient(rgba(60, 68, 63, 0.8), rgba(60, 68, 63, 0.8)), 
-                  url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
-      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 4em 2em;
-      border-radius: 0 0 18px 18px;
-      margin-bottom: 2em;
-      box-sizing: border-box;
+      color: white;
     }
 
     .header-section h1 {
-        font-size: 3em;
-        margin-bottom: 0.5em;
+      font-size: 3em;
+      margin-bottom: 0.5em;
     }
 
     .header-section p {
-        font-size: 1.2em;
-        max-width: 600px;
-        margin: 0 auto;
+      font-size: 1.2em;
+      margin: 1em 0;
+      max-width: 600px;
     }
 
     .contact-section {
@@ -90,7 +88,7 @@
       font-family: 'Poppins', serif;
       box-shadow: 0 2px 8px rgba(90, 75, 91, 0.05);
       border-radius: 12px;
-      margin: 0 auto 2em auto;
+      margin: 2em auto 2em auto;
       max-width: 900px;
     }
     .contact-container {
@@ -127,12 +125,6 @@
       box-shadow: 0 0 15px rgba(91, 75, 91, 0.1);
     }
     footer {
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
       background-color: #3c443f;
       color: #ffffff;
       text-align: center;
@@ -146,7 +138,10 @@
         gap: 1em;
       }
       .header-section {
-        padding: 2em 1em;
+        height: 60vh;
+      }
+      .header-section h1 {
+        font-size: 2em;
       }
       .contact-section {
         padding: 1.5em 1em;
@@ -167,17 +162,17 @@
       </ul>
     </nav>
   </header>
-  <!-- Header Section (full width) -->
+  <!-- Header Section -->
   <section class="header-section">
     <h1>Contacts</h1>
-    <p>We’d love to hear from you! Reach out for reservations, questions, or feedback.</p>
+    <p>We'd love to hear from you! Reach out for reservations, questions, or feedback.</p>
   </section>
   <div class="container">
     <!-- Contact Section -->
     <section class="contact-section">
       <div class="contact-container">
         <h1>Contact Us</h1>
-        <p>Whether you have questions about your reservation or want to know more about our amenities, we’re here to help.</p>
+        <p>Whether you have questions about your reservation or want to know more about our amenities, we're here to help.</p>
         <div class="contact-info">
           <div>
             <h2>📍 Address</h2>
@@ -202,7 +197,7 @@
       </div>
     </section>
   </div>
-  <!-- Footer (full width) -->
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Grand Plaza Hotel. All Rights Reserved.</p>
   </footer>
