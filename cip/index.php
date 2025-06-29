@@ -273,7 +273,7 @@ $availableRooms = $stmt->fetch()['available_rooms'];
           <div class="stat-label">Confirmed Bookings</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">4.8★</div>
+          <div class="stat-number">4.5★</div>
           <div class="stat-label">Guest Rating</div>
         </div>
       </div>

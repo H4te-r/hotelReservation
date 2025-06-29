@@ -176,15 +176,15 @@
         <div class="contact-info">
           <div>
             <h2>📍 Address</h2>
-            <p>123 Luxury Lane, Downtown City, PH 1000</p>
+            <p>123 Main Street, Downtown, City</p>
           </div>
           <div>
             <h2>📞 Phone</h2>
-            <p>+63 912 345 6789</p>
+            <p>+1-555-0123</p>
           </div>
           <div>
             <h2>📧 Email</h2>
-            <p>info@grandplazahotel.com</p>
+            <p>info@grandplaza.com</p>
           </div>
           <div>
             <h2>🌐 Facebook</h2>
