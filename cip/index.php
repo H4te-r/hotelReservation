@@ -66,10 +66,22 @@ $availableRooms = $stmt->fetch()['available_rooms'];
       .nav-links {
         display: flex;
         gap: 1.5em;
+        list-style: none;
+        margin: 0;
+        padding: 0;
       }
-
       .nav-links li a {
         font-weight: 600;
+        color: #fff;
+        text-decoration: none;
+        padding: 0.3em 0.7em;
+        border-radius: 4px;
+        transition: background 0.2s;
+      }
+      .nav-links li a.active,
+      .nav-links li a:hover {
+        background: #5b4b5b;
+        color: #fff;
       }
 
       /* Hero Section */
@@ -224,13 +236,13 @@ $availableRooms = $stmt->fetch()['available_rooms'];
             <a href="index.php"><u>Home</u></a>
           </li>
           <li>
-            <a href="#">About us</a>
+            <a href="aboutus.php">About us</a>
           </li>
           <li>
             <a href="rooms.php">Rooms</a>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <a href="contacts.php">Contact</a>
           </li>
         </ul>
       </nav>

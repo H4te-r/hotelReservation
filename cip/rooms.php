@@ -55,18 +55,25 @@ $rooms = $stmt->fetchAll();
         }
 
         .nav-links {
-            display: flex;
-            gap: 1.5em;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links li a {
-            color: #ffffff;
-            font-weight: 600;
-            text-decoration: none;
-        }
+        display: flex;
+        gap: 1.5em;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .nav-links li a {
+        font-weight: 600;
+        color: #fff;
+        text-decoration: none;
+        padding: 0.3em 0.7em;
+        border-radius: 4px;
+        transition: background 0.2s;
+      }
+      .nav-links li a.active,
+      .nav-links li a:hover {
+        background: #5b4b5b;
+        color: #fff;
+      }
 
         .btn-primary {
             background-color: #516b5d;
@@ -228,9 +235,9 @@ $rooms = $stmt->fetchAll();
         <nav>
             <ul class="nav-links">
                 <li><a href="index.php">Home</a></li>
-                <li><a href="#">About us</a></li>
+                <li><a href="aboutus.php">About us</a></li>
                 <li><a href="rooms.php"><u>Rooms</u></a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="contacts.php">Contact</a></li>
             </ul>
         </nav>
     </header>
