@@ -137,8 +137,8 @@ $hotel = $stmt->fetch();
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <p><strong>Address:</strong> <?php echo htmlspecialchars($hotel['address']); ?></p>
-                        <p><strong>Phone:</strong> <?php echo htmlspecialchars($hotel['phone']); ?></p>
+                        <p><strong>Address:</strong> 123 Luxury Lane, Downtown City, PH 1000 </p>
+                        <p><strong>Phone:</strong>  +63 912 345 6789</p>
                         <p><strong>Email:</strong> <?php echo htmlspecialchars($hotel['email']); ?></p>
                         <p><strong>Description:</strong> <?php echo htmlspecialchars($hotel['description']); ?></p>
                     </div>
@@ -196,10 +196,6 @@ $hotel = $stmt->fetch();
                         <textarea name="description" class="form-control" rows="4"><?php echo htmlspecialchars($hotel['description']); ?></textarea>
                     </div>
                     
-                    <div class="form-group">
-                        <label class="form-label">Image URL</label>
-                        <input type="url" name="image_url" class="form-control" value="<?php echo htmlspecialchars($hotel['image_url']); ?>">
-                    </div>
                     
                     <div class="d-flex gap-2">
                         <button type="submit" class="btn btn-primary">
