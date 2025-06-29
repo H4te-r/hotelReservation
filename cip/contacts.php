@@ -184,7 +184,7 @@
           </div>
           <div>
             <h2>📧 Email</h2>
-            <p>info@grandplazahotel.com</p>
+            <p>info@grandplaza.com</p>
           </div>
           <div>
             <h2>🌐 Facebook</h2>
