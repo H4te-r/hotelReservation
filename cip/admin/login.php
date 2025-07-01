@@ -17,7 +17,7 @@ if (isLoggedIn()) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg,rgb(163, 107, 163) 0%, #5b4b5b 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -32,7 +32,7 @@ if (isLoggedIn()) {
             width: 100%;
         }
         .login-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg,rgb(117, 63, 117) 0%, #5b4b5b   100%);
             color: white;
             padding: 30px;
             text-align: center;
@@ -51,7 +51,7 @@ if (isLoggedIn()) {
             box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
         }
         .btn-login {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #5b4b5b 0%,rgb(157, 105, 157) 100%);
             border: none;
             border-radius: 10px;
             padding: 12px;
