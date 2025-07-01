@@ -184,7 +184,7 @@ $hotel = $stmt->fetch();
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-label">Rating</label>
+                               <label class="form-label">Rating</label>
                                 <input type="number" name="rating" class="form-control" step="0.1" min="0" max="5" value="<?php echo htmlspecialchars($hotel['rating']); ?>">
                             </div>
                         </div>
