@@ -393,25 +393,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <p>&copy; 2025 <?php echo htmlspecialchars($hotel['name']); ?>. All Rights Reserved.</p>
     </footer>
 
-   <script>
-  // Show room details when room is selected
-  document.getElementById('room_id').addEventListener('change', function () {
-    const roomDetails = document.getElementById('room-details');
-    const selectedOption = this.options[this.selectedIndex];
-
-    if (this.value) {
-      const price = selectedOption.getAttribute('data-price');
-      const capacity = selectedOption.getAttribute('data-capacity');
-      roomDetails.innerHTML = `
-        <strong>Room Details:</strong><br>
-        Price: ₱${parseInt(price).toLocaleString()}/night<br>
-        Capacity: ${capacity} guests
-      `;
-      roomDetails.style.display = 'block';
-    } else {
-      roomDetails.style.display = 'none';
-    }
-  });
+    <script>
+      // Show room details when room is selected
+      document.getElementById('room_id').addEventListener('change', function() {
+        const roomDetails = document.getElementById('room-details');
+        const selectedOption = this.options[this.selectedIndex];
+        
+        if (this.value) {
+          const price = selectedOption.getAttribute('data-price');
+          const capacity = selectedOption.getAttribute('data-capacity');
+          roomDetails.innerHTML = `
+            <strong>Room Details:</strong><br>
+            Price: ₱${parseInt(price).toLocaleString()}/night<br>
+            Capacity: ${capacity} guests
+          `;
+          roomDetails.style.display = 'block';
+        } else {
+          roomDetails.style.display = 'none';
+        }
+      });
 
   // Set minimum date for check-in and check-out
   const today = new Date().toISOString().split('T')[0];
