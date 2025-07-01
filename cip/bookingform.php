@@ -394,8 +394,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </footer>
 
     <script>
+      // Filter rooms by number of guests
+      const numGuestsInput = document.getElementById('num_guests');
+      const roomSelect = document.getElementById('room_id');
+      const allRoomOptions = Array.from(roomSelect.options).filter(opt => opt.value !== "");
 
-       const phoneInput = document.getElementById('phone');
+      function filterRoomsByGuests() {
+        const numGuests = parseInt(numGuestsInput.value, 10) || 1;
+        // Remove all options except the placeholder
+        roomSelect.innerHTML = '<option value="">-- Select Room Type --</option>';
+        allRoomOptions.forEach(opt => {
+          const capacity = parseInt(opt.getAttribute('data-capacity'), 10);
+          if (capacity >= numGuests) {
+            roomSelect.appendChild(opt);
+          }
+        });
+      }
+
+      numGuestsInput.addEventListener('input', filterRoomsByGuests);
+      // Initial filter on page load
+      filterRoomsByGuests();
+
+      const phoneInput = document.getElementById('phone');
     
     // Remove non-digits and limit to 11 characters
     phoneInput.addEventListener('input', function() {

@@ -80,11 +80,19 @@ INSERT INTO hotel (name, address, phone, email, description, rating, image_url) 
 INSERT INTO rooms (name, room_number, room_type, capacity, size, price_per_night, description, has_wifi, has_tv, has_ac, image_url) VALUES
 ('Standard Room 101', '101', 'Standard Room', 2, 300, 5000.00, 'Comfortable standard room with city view, queen bed, and modern amenities', TRUE, TRUE, TRUE, 'room1.jpg'),
 ('Standard Room 102', '102', 'Standard Room', 2, 300, 5000.00, 'Cozy standard room with city view, queen bed, and modern amenities', TRUE, TRUE, TRUE, 'room2.jpg'),
-('Deluxe Room 201', '201', 'Deluxe Room', 3, 450, 8500.00, 'Spacious deluxe room with premium amenities, king bed, and city skyline view', TRUE, TRUE, TRUE, 'room3.jpg'),
-('Deluxe Room 202', '202', 'Deluxe Room', 3, 450, 8500.00, 'Elegant deluxe room with premium amenities, king bed, and city skyline view', TRUE, TRUE, TRUE, 'room4.jpg'),
-('Suite 301', '301', 'Suite', 4, 600, 15000.00, 'Luxury suite with separate living area, king bed, and panoramic city views', TRUE, TRUE, TRUE, 'room5.jpg'),
-('Suite 302', '302', 'Suite', 4, 600, 15000.00, 'Executive suite with separate living area, king bed, and panoramic city views', TRUE, TRUE, TRUE, 'room6.jpg'),
-('Presidential Suite 401', '401', 'Presidential Suite', 6, 1000, 25000.00, 'Ultimate luxury with multiple rooms, private balcony, and premium services', TRUE, TRUE, TRUE, 'room7.jpg');
+('Standard Room 103', '103', 'Standard Room', 2, 300, 5000.00, 'Bright standard room with city view, queen bed, and modern amenities', TRUE, TRUE, TRUE, 'room3.jpg'),
+('Standard Room 104', '104', 'Standard Room', 2, 300, 5000.00, 'Quiet standard room with city view, queen bed, and modern amenities', TRUE, TRUE, TRUE, 'room4.jpg'),
+('Deluxe Room 201', '201', 'Deluxe Room', 3, 450, 8500.00, 'Spacious deluxe room with premium amenities, king bed, and city skyline view', TRUE, TRUE, TRUE, 'room5.jpg'),
+('Deluxe Room 202', '202', 'Deluxe Room', 3, 450, 8500.00, 'Elegant deluxe room with premium amenities, king bed, and city skyline view', TRUE, TRUE, TRUE, 'room6.jpg'),
+('Deluxe Room 203', '203', 'Deluxe Room', 3, 450, 8500.00, 'Modern deluxe room with premium amenities, king bed, and city skyline view', TRUE, TRUE, TRUE, 'room7.jpg'),
+('Deluxe Room 204', '204', 'Deluxe Room', 3, 450, 8500.00, 'Deluxe room with premium amenities, king bed, and city skyline view', TRUE, TRUE, TRUE, 'room8.jpg'),
+('Suite 301', '301', 'Suite', 4, 600, 15000.00, 'Luxury suite with separate living area, king bed, and panoramic city views', TRUE, TRUE, TRUE, 'room9.jpg'),
+('Suite 302', '302', 'Suite', 4, 600, 15000.00, 'Executive suite with separate living area, king bed, and panoramic city views', TRUE, TRUE, TRUE, 'room10.jpg'),
+('Suite 303', '303', 'Suite', 4, 600, 15000.00, 'Family suite with two queen beds and a living area', TRUE, TRUE, TRUE, 'room11.jpg'),
+('Suite 304', '304', 'Suite', 5, 700, 17000.00, 'Large suite with two bedrooms and a living area', TRUE, TRUE, TRUE, 'room12.jpg'),
+('Presidential Suite 401', '401', 'Presidential Suite', 6, 1000, 25000.00, 'Ultimate luxury with multiple rooms, private balcony, and premium services', TRUE, TRUE, TRUE, 'room13.jpg'),
+('Presidential Suite 402', '402', 'Presidential Suite', 6, 1000, 25000.00, 'Presidential suite with private balcony and premium services', TRUE, TRUE, TRUE, 'room14.jpg'),
+('Presidential Suite 403', '403', 'Presidential Suite', 6, 1000, 25000.00, 'Presidential suite with private balcony and premium services', TRUE, TRUE, TRUE, 'room15.jpg');
 
 -- Insert admin users
 INSERT INTO admin_users (username, password, email, full_name, role) VALUES

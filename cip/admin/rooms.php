@@ -141,10 +141,6 @@ $hotel = $stmt->fetch();
             <div class="top-nav">
                 <h1 class="page-title">Rooms Management</h1>
                 <div class="user-info">
-                    <a href="?action=add" class="btn btn-primary">
-                        <i class="fas fa-plus"></i>
-                        Add Room
-                    </a>
                     <i class="fas fa-user"></i>
                     <span>Welcome, <?php echo htmlspecialchars($_SESSION['admin_name']); ?>!</span>
                 </div>
@@ -165,81 +161,7 @@ $hotel = $stmt->fetch();
                 </div>
             <?php endif; ?>
 
-            <!-- Add/Edit Room Form -->
-            <?php if (isset($_GET['action']) && ($_GET['action'] === 'add' || $_GET['action'] === 'edit')): ?>
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            <i class="fas fa-<?php echo $_GET['action'] === 'add' ? 'plus' : 'edit'; ?>"></i>
-                            <?php echo $_GET['action'] === 'add' ? 'Add New Room' : 'Edit Room'; ?>
-                        </h3>
-                    </div>
-                    <form method="POST">
-                        <input type="hidden" name="action" value="<?php echo $_GET['action']; ?>">
-                        <?php if ($editRoom): ?>
-                            <input type="hidden" name="id" value="<?php echo $editRoom['id']; ?>">
-                        <?php endif; ?>
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">Room Number</label>
-                                    <input type="text" name="room_number" class="form-control" 
-                                           value="<?php echo $editRoom ? htmlspecialchars($editRoom['room_number']) : ''; ?>" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">Room Type</label>
-                                    <select name="room_type" class="form-select" required>
-                                        <option value="">Select Room Type</option>
-                                        <option value="Standard" <?php echo ($editRoom && $editRoom['room_type'] === 'Standard') ? 'selected' : ''; ?>>Standard</option>
-                                        <option value="Deluxe" <?php echo ($editRoom && $editRoom['room_type'] === 'Deluxe') ? 'selected' : ''; ?>>Deluxe</option>
-                                        <option value="Suite" <?php echo ($editRoom && $editRoom['room_type'] === 'Suite') ? 'selected' : ''; ?>>Suite</option>
-                                        <option value="Presidential" <?php echo ($editRoom && $editRoom['room_type'] === 'Presidential') ? 'selected' : ''; ?>>Presidential</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">Capacity</label>
-                                    <input type="number" name="capacity" class="form-control" 
-                                           value="<?php echo $editRoom ? htmlspecialchars($editRoom['capacity']) : ''; ?>" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">Price per Night (₱)</label>
-                                    <input type="number" name="price_per_night" class="form-control" step="0.01"
-                                           value="<?php echo $editRoom ? htmlspecialchars($editRoom['price_per_night']) : ''; ?>" required>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Description</label>
-                            <textarea name="description" class="form-control" rows="3"><?php echo $editRoom ? htmlspecialchars($editRoom['description']) : ''; ?></textarea>
-                        </div>
-                        
-                        
-                        <div class="d-flex gap-2">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save"></i>
-                                <?php echo $_GET['action'] === 'add' ? 'Add Room' : 'Update Room'; ?>
-                            </button>
-                            <a href="rooms.php" class="btn btn-secondary">
-                                <i class="fas fa-times"></i>
-                                Cancel
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            <?php endif; ?>
-
-            <!-- Rooms List -->
+            <!-- Room List Table -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">All Rooms</h3>
