@@ -14,7 +14,18 @@ $totalReservations = $stmt->fetch()['total_reservations'];
 $stmt = $pdo->query("SELECT COUNT(*) as pending_reservations FROM reservations WHERE status = 'pending'");
 $pendingReservations = $stmt->fetch()['pending_reservations'];
 
-$stmt = $pdo->query("SELECT COUNT(*) as available_rooms FROM rooms WHERE is_available = 1");
+// Calculate available rooms: Exclude rooms with confirmed future or current reservations
+$today = date('Y-m-d');
+$stmt = $pdo->query("
+    SELECT COUNT(*) as available_rooms
+    FROM rooms
+    WHERE is_available = 1
+    AND id NOT IN (
+        SELECT room_id FROM reservations
+        WHERE status = 'confirmed'
+        AND check_out_date > '$today'
+    )
+");
 $availableRooms = $stmt->fetch()['available_rooms'];
 
 // Get hotel info
@@ -38,7 +49,6 @@ $hotel = $stmt->fetch();
             <div class="sidebar-header">
                 <a href="../index.php" class="logo">
                     <img src="../assets/images/logo.png" alt="Hotel Logo" style="height: 60px; width: auto;">
-                    <!-- <span class="logo-text"><?php echo htmlspecialchars($hotel['name']); ?></span> -->
                 </a>
                 <h3><i class="fas fa-hotel"></i> Admin Panel</h3>
             </div>
