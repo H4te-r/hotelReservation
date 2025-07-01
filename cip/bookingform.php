@@ -394,6 +394,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </footer>
 
     <script>
+
+       const phoneInput = document.getElementById('phone');
+    
+    // Remove non-digits and limit to 11 characters
+    phoneInput.addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+    
+    // Block non-numeric keys
+    phoneInput.addEventListener('keypress', function(e) {
+        if (!/[0-9]/.test(e.key) && !['Backspace', 'Delete', 'Tab'].includes(e.key)) {
+            e.preventDefault();
+        }
+    });
+    
       // Show room details when room is selected
       document.getElementById('room_id').addEventListener('change', function() {
         const roomDetails = document.getElementById('room-details');
