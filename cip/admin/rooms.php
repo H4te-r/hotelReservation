@@ -224,11 +224,6 @@ $hotel = $stmt->fetch();
                             <textarea name="description" class="form-control" rows="3"><?php echo $editRoom ? htmlspecialchars($editRoom['description']) : ''; ?></textarea>
                         </div>
                         
-                        <div class="form-group">
-                            <label class="form-label">Image URL</label>
-                            <input type="url" name="image_url" class="form-control" 
-                                   value="<?php echo $editRoom ? htmlspecialchars($editRoom['image_url']) : ''; ?>">
-                        </div>
                         
                         <div class="d-flex gap-2">
                             <button type="submit" class="btn btn-primary">
