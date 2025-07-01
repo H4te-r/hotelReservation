@@ -54,7 +54,7 @@ CREATE TABLE reservations (
     check_out_date DATE NOT NULL,
     num_guests INT NOT NULL,
     total_price DECIMAL(10,2),
-    status ENUM('pending', 'confirmed', 'cancelled', 'completed') DEFAULT 'pending',
+    status ENUM('pending', 'confirmed', 'cancelled', 'completed', 'paid') DEFAULT 'pending',
     special_requests TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

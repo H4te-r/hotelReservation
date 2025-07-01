@@ -236,8 +236,9 @@ $hotel = $stmt->fetch();
                                             <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
                                                 <option value="pending" <?php echo $reservation['status'] === 'pending' ? 'selected' : ''; ?>>Pending</option>
                                                 <option value="confirmed" <?php echo $reservation['status'] === 'confirmed' ? 'selected' : ''; ?>>Confirmed</option>
-                                                <option value="completed" <?php echo $reservation['status'] === 'paid' ? 'selected' : ''; ?>>Paid</option>
+                                                <option value="completed" <?php echo $reservation['status'] === 'completed' ? 'selected' : ''; ?>>Completed</option>
                                                 <option value="cancelled" <?php echo $reservation['status'] === 'cancelled' ? 'selected' : ''; ?>>Cancelled</option>
+                                                <option value="paid" <?php echo $reservation['status'] === 'paid' ? 'selected' : ''; ?>>Paid</option>
                                             </select>
                                         </form>
                                         
