@@ -343,7 +343,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <form class="reservation-form" method="POST" action="">
         <div class="form-group">
           <label for="guest_name">Guest Name</label>
-          <input type="text" id="guest_name" name="guest_name" placeholder="Full Name" value="<?php echo htmlspecialchars($_POST['guest_name'] ?? ''); ?>" required />
+          <input type="text" pattern="^[a-zA-Z ]*$" id="guest_name" name="guest_name" placeholder="Full Name" value="<?php echo htmlspecialchars($_POST['guest_name'] ?? ''); ?>" required />
         </div>
         <div class="form-group">
           <label for="email">Email Address</label>
@@ -393,47 +393,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <p>&copy; 2025 <?php echo htmlspecialchars($hotel['name']); ?>. All Rights Reserved.</p>
     </footer>
 
-    <script>
-      // Show room details when room is selected
-      document.getElementById('room_id').addEventListener('change', function() {
-        const roomDetails = document.getElementById('room-details');
-        const selectedOption = this.options[this.selectedIndex];
-        
-        if (this.value) {
-          const price = selectedOption.getAttribute('data-price');
-          const capacity = selectedOption.getAttribute('data-capacity');
-          roomDetails.innerHTML = `
-            <strong>Room Details:</strong><br>
-            Price: ₱${parseInt(price).toLocaleString()}/night<br>
-            Capacity: ${capacity} guests
-          `;
-          roomDetails.style.display = 'block';
-        } else {
-          roomDetails.style.display = 'none';
-        }
-      });
+   <script>
+  // Show room details when room is selected
+  document.getElementById('room_id').addEventListener('change', function () {
+    const roomDetails = document.getElementById('room-details');
+    const selectedOption = this.options[this.selectedIndex];
 
-      // Set minimum date for check-in and check-out
-      const today = new Date().toISOString().split('T')[0];
-      document.getElementById('check_in_date').min = today;
-      document.getElementById('check_out_date').min = today;
+    if (this.value) {
+      const price = selectedOption.getAttribute('data-price');
+      const capacity = selectedOption.getAttribute('data-capacity');
+      roomDetails.innerHTML = `
+        <strong>Room Details:</strong><br>
+        Price: ₱${parseInt(price).toLocaleString()}/night<br>
+        Capacity: ${capacity} guests
+      `;
+      roomDetails.style.display = 'block';
+    } else {
+      roomDetails.style.display = 'none';
+    }
+  });
 
-      // Update check-out minimum date when check-in changes
-      document.getElementById('check_in_date').addEventListener('change', function() {
-        document.getElementById('check_out_date').min = this.value;
-        if (document.getElementById('check_out_date').value && 
-            document.getElementById('check_out_date').value <= this.value) {
-          document.getElementById('check_out_date').value = '';
-        }
-      });
+  // Set minimum date for check-in and check-out
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('check_in_date').min = today;
+  document.getElementById('check_out_date').min = today;
 
-      // Auto-show room details if room is pre-selected
-      window.addEventListener('load', function() {
-        const roomSelect = document.getElementById('room_id');
-        if (roomSelect.value) {
-          roomSelect.dispatchEvent(new Event('change'));
-        }
-      });
-    </script>
+  // Update check-out minimum date when check-in changes
+  document.getElementById('check_in_date').addEventListener('change', function () {
+    document.getElementById('check_out_date').min = this.value;
+    if (
+      document.getElementById('check_out_date').value &&
+      document.getElementById('check_out_date').value <= this.value
+    ) {
+      document.getElementById('check_out_date').value = '';
+    }
+  });
+
+  // Auto-show room details if room is pre-selected
+  window.addEventListener('load', function () {
+    const roomSelect = document.getElementById('room_id');
+    if (roomSelect.value) {
+      roomSelect.dispatchEvent(new Event('change'));
+    }
+
+    // Restrict guest name input to letters and spaces only
+    document.getElementById('guest_name').addEventListener('keypress', function (e) {
+      const char = String.fromCharCode(e.which);
+      if (!/^[a-zA-Z ]$/.test(char)) {
+        e.preventDefault(); // Block the character from being entered
+      }
+    });
+
+    // Clean pasted input for guest name
+    document.getElementById('guest_name').addEventListener('input', function (e) {
+      this.value = this.value.replace(/[^a-zA-Z ]/g, '');
+    });
+  });
+</script>
+
   </body>
 </html>
