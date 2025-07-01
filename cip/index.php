@@ -3,6 +3,8 @@ require_once 'config/database.php';
 
 $pdo = getDBConnection();
 
+
+
 // Get hotel information
 $stmt = $pdo->query("SELECT * FROM hotel LIMIT 1");
 $hotel = $stmt->fetch();
@@ -16,6 +18,8 @@ $confirmedReservations = $stmt->fetch()['confirmed_reservations'];
 
 $stmt = $pdo->query("SELECT COUNT(*) as available_rooms FROM rooms WHERE is_available = 1");
 $availableRooms = $stmt->fetch()['available_rooms'];
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -297,9 +301,9 @@ $availableRooms = $stmt->fetch()['available_rooms'];
           <div class="stat-label">Confirmed Bookings</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">4.5★</div>
-          <div class="stat-label">Guest Rating</div>
-        </div>
+          <div class="stat-number"><?php echo number_format($hotel['rating'], 1); ?>★</div>
+         <div class="stat-label">Guest Rating</div>
+      </div>
       </div>
     </section>
 
