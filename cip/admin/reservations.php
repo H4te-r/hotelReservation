@@ -170,8 +170,8 @@ $hotel = $stmt->fetch();
                         <div class="stat-icon success">
                             <i class="fas fa-check-double"></i>
                         </div>
-                        <div class="stat-number"><?php echo $statusStats['completed'] ?? 0; ?></div>
-                        <div class="stat-label">Completed</div>
+                        <div class="stat-number"><?php echo $statusStats['paid'] ?? 0; ?></div>
+                        <div class="stat-label">Paid</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon danger">
@@ -236,7 +236,7 @@ $hotel = $stmt->fetch();
                                             <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
                                                 <option value="pending" <?php echo $reservation['status'] === 'pending' ? 'selected' : ''; ?>>Pending</option>
                                                 <option value="confirmed" <?php echo $reservation['status'] === 'confirmed' ? 'selected' : ''; ?>>Confirmed</option>
-                                                <option value="completed" <?php echo $reservation['status'] === 'completed' ? 'selected' : ''; ?>>Completed</option>
+                                                <option value="completed" <?php echo $reservation['status'] === 'paid' ? 'selected' : ''; ?>>Paid</option>
                                                 <option value="cancelled" <?php echo $reservation['status'] === 'cancelled' ? 'selected' : ''; ?>>Cancelled</option>
                                             </select>
                                         </form>
