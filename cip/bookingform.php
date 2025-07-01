@@ -33,6 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 throw new Exception("All fields are required.");
             }
         }
+        // Validate number of guests
+        if (isset($_POST['num_guests']) && ((int)$_POST['num_guests'] > 6)) {
+            throw new Exception("Number of guests must not exceed 6.");
+        }
 
         // Validate dates
         $check_in = new DateTime($_POST['check_in_date']);
@@ -412,7 +416,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="form-group">
           <label for="num_guests">Number of Guests</label>
-          <input type="number" id="num_guests" name="num_guests" min="1" max="10" placeholder="e.g. 2" value="<?php echo htmlspecialchars($_POST['num_guests'] ?? ''); ?>" required />
+          <input type="number" id="num_guests" name="num_guests" min="1" max="6" placeholder="e.g. 2" value="<?php echo htmlspecialchars($_POST['num_guests'] ?? ''); ?>" required />
         </div>
         <div class="form-group">
           <label for="room_id">Room Type</label>
@@ -565,6 +569,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     document.getElementById('guest_name').addEventListener('input', function (e) {
       this.value = this.value.replace(/[^a-zA-Z ]/g, '');
     });
+  });
+
+  numGuestsInput.addEventListener('input', function() {
+    if (parseInt(this.value, 10) > 6) {
+      this.value = 6;
+    }
+  });
+
+  // Prevent typing numbers above 6
+  numGuestsInput.addEventListener('keypress', function(e) {
+    const char = String.fromCharCode(e.which);
+    const currentValue = this.value;
+    // If the next value would be above 6, block it
+    if (/\d/.test(char)) {
+      const nextValue = parseInt(currentValue + char, 10);
+      if (nextValue > 6) {
+        e.preventDefault();
+      }
+    }
+  });
+  // Prevent pasting values above 6
+  numGuestsInput.addEventListener('paste', function(e) {
+    const paste = (e.clipboardData || window.clipboardData).getData('text');
+    if (parseInt(paste, 10) > 6) {
+      e.preventDefault();
+      this.value = 6;
+    }
   });
 </script>
 

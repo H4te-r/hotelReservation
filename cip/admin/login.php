@@ -72,7 +72,6 @@ if (isLoggedIn()) {
         }
     </style>
 </head>
-<body>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4">
@@ -80,7 +79,7 @@ if (isLoggedIn()) {
                     <div class="login-header">
                         <i class="fas fa-hotel fa-3x mb-3"></i>
                         <h3>Admin Login</h3>
-                        <p class="mb-0">Hotel Reservation System</p>
+                        <p class="mb-0">Grand Plaza Hotel</p>
                     </div>
                     <div class="login-body">
                         <?php if (isset($error)): ?>
