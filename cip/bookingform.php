@@ -272,6 +272,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         transition: background 0.3s ease;
       }
 
+      .phone-input-wrapper {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .country-prefix {
+      background-color: #f5f5f5;
+      padding: 8px 12px;
+      border-right: 1px solid #ddd;
+      font-weight: 500;
+      color: #333;
+      white-space: nowrap;
+    }
+
+    .phone-input-wrapper input {
+      border: none;
+      outline: none;
+      padding: 8px 12px;
+      flex: 1;
+      font-size: inherit;
+    }
+
+    .phone-input-wrapper:focus-within {
+      border-color: #007bff;
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    }
       .btn-primary:hover {
         background-color: #3c443f;
       }
@@ -304,6 +333,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           grid-column: span 1;
         }
       }
+
+
     </style>
   </head>
   <body>
@@ -351,7 +382,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="form-group">
           <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" pattern="[0-9]{1,11}"  inputmode="numeric" maxlength="11" placeholder="Phone Number" value="<?php echo htmlspecialchars($_POST['phone'] ?? ''); ?>" />
+          <div class="phone-input-wrapper">
+            <span class="country-prefix">+63</span>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{1,10}" inputmode="numeric" maxlength="10" placeholder="Phone Number" value="<?php echo htmlspecialchars($_POST['phone'] ?? ''); ?>" />
+          </div>
         </div>
         <div class="form-group">
           <label for="check_in_date">Check-in Date</label>
@@ -428,7 +462,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             e.preventDefault();
         }
     });
-    
+
       // Show room details when room is selected
       document.getElementById('room_id').addEventListener('change', function() {
         const roomDetails = document.getElementById('room-details');
