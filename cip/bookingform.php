@@ -273,34 +273,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       }
 
       .phone-input-wrapper {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      overflow: hidden;
-    }
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        overflow: hidden;
+      }
 
-    .country-prefix {
-      background-color: #f5f5f5;
-      padding: 8px 12px;
-      border-right: 1px solid #ddd;
-      font-weight: 500;
-      color: #333;
-      white-space: nowrap;
-    }
+      .country-prefix {
+        background-color: #f5f5f5;
+        padding: 8px 12px;
+        border-right: 1px solid #ddd;
+        font-weight: 500;
+        color: #333;
+        white-space: nowrap;
+      }
 
-    .phone-input-wrapper input {
-      border: none;
-      outline: none;
-      padding: 8px 12px;
-      flex: 1;
-      font-size: inherit;
-    }
+      .phone-input-wrapper input {
+        border: none;
+        outline: none;
+        padding: 8px 12px;
+        flex: 1;
+        font-size: inherit;
+      }
 
-    .phone-input-wrapper:focus-within {
-      border-color: #007bff;
-      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-    }
+      .phone-input-wrapper:focus-within {
+        border-color: #007bff;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+      }
+
+      .phone-input-wrapper input:invalid {
+        border-left: 3px solidrgb(255, 255, 255);
+      }
+
+      .phone-input-wrapper input:invalid + .error-message {
+        display: block;
+      }
+
+      .error-message {
+        display: none;
+        color: #dc3545;
+        font-size: 0.875em;
+        margin-top: 5px;
+      }
       .btn-primary:hover {
         background-color: #3c443f;
       }
@@ -384,7 +399,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <label for="phone">Phone Number</label>
           <div class="phone-input-wrapper">
             <span class="country-prefix">+63</span>
-            <input type="tel" id="phone" name="phone" pattern="[0-9]{1,10}" inputmode="numeric" maxlength="10" placeholder="Phone Number" value="<?php echo htmlspecialchars($_POST['phone'] ?? ''); ?>" />
+            <input type="tel" id="phone" name="phone" pattern="9[0-9]{9}" inputmode="numeric" maxlength="10" placeholder="Phone Number" value="<?php echo htmlspecialchars($_POST['phone'] ?? ''); ?>" required />
           </div>
         </div>
         <div class="form-group">
@@ -428,6 +443,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </footer>
 
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const phoneInput = document.getElementById('phone');
+      const errorMessage = document.createElement('div');
+      errorMessage.className = 'error-message';
+      phoneInput.parentNode.parentNode.appendChild(errorMessage);
+      
+      phoneInput.addEventListener('input', function() {
+        const value = this.value;
+        
+        if (value.length > 0 && !value.startsWith('9')) {
+          this.setCustomValidity('Phone number must start with 9');
+          errorMessage.textContent = 'Phone number must start with 9';
+          errorMessage.style.display = 'block';
+        } else if (value.length > 0 && value.length !== 10) {
+          this.setCustomValidity('Phone number must be exactly 10 digits');
+          errorMessage.textContent = 'Phone number must be exactly 10 digits';
+          errorMessage.style.display = 'block';
+        } else {
+          this.setCustomValidity('');
+          errorMessage.style.display = 'none';
+        }
+      });
+      
+      phoneInput.addEventListener('blur', function() {
+        const value = this.value;
+        if (value.length > 0 && value.length !== 10) {
+          this.setCustomValidity('Phone number must be exactly 10 digits');
+          errorMessage.textContent = 'Phone number must be exactly 10 digits';
+          errorMessage.style.display = 'block';
+        }
+      });
+    });
+
       // Filter rooms by number of guests
       const numGuestsInput = document.getElementById('num_guests');
       const roomSelect = document.getElementById('room_id');
