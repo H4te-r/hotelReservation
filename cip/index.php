@@ -3,23 +3,31 @@ require_once 'config/database.php';
 
 $pdo = getDBConnection();
 
-
-
 // Get hotel information
 $stmt = $pdo->query("SELECT * FROM hotel LIMIT 1");
 $hotel = $stmt->fetch();
 
-// Get room statistics
+// Get total rooms
 $stmt = $pdo->query("SELECT COUNT(*) as total_rooms FROM rooms WHERE is_available = 1");
 $totalRooms = $stmt->fetch()['total_rooms'];
 
+// Get confirmed reservations
 $stmt = $pdo->query("SELECT COUNT(*) as confirmed_reservations FROM reservations WHERE status = 'confirmed'");
 $confirmedReservations = $stmt->fetch()['confirmed_reservations'];
 
-$stmt = $pdo->query("SELECT COUNT(*) as available_rooms FROM rooms WHERE is_available = 1");
+// Get available rooms (excluding confirmed bookings for today)
+$today = date('Y-m-d');
+$stmt = $pdo->query("
+    SELECT COUNT(*) as available_rooms
+    FROM rooms
+    WHERE is_available = 1
+    AND id NOT IN (
+        SELECT room_id FROM reservations
+        WHERE status = 'confirmed'
+        AND check_out_date > '$today'
+    )
+");
 $availableRooms = $stmt->fetch()['available_rooms'];
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
