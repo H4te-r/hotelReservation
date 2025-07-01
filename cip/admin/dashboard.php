@@ -77,12 +77,6 @@ $hotel = $stmt->fetch();
                         Reservations
                     </a>
                 </div>
-                <div class="nav-item">
-                    <a href="add_reservation.php" class="nav-link">
-                        <i class="fas fa-plus-circle"></i>
-                        Add Reservation
-                    </a>
-                </div>
                 <div class="nav-divider"></div>
                 <div class="nav-item">
                     <a href="?logout=1" class="nav-link">
@@ -174,17 +168,9 @@ $hotel = $stmt->fetch();
                     <h3 class="card-title">Quick Actions</h3>
                 </div>
                 <div class="quick-actions-flex">
-                    <a href="add_reservation.php" class="quick-action-btn btn-primary">
-                        <i class="fas fa-plus-circle"></i>
-                        <span>Add New Reservation</span>
-                    </a>
                     <a href="reservations.php" class="quick-action-btn btn-secondary">
                         <i class="fas fa-calendar-check"></i>
                         <span>View All Reservations</span>
-                    </a>
-                    <a href="rooms.php" class="quick-action-btn btn-success">
-                        <i class="fas fa-bed"></i>
-                        <span>Manage Rooms</span>
                     </a>
                 </div>
             </div>

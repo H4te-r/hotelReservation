@@ -13,9 +13,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             case 'update_status':
                 $reservationId = $_POST['reservation_id'] ?? '';
                 $status = $_POST['status'] ?? '';
-                
+                // Get the room_id for this reservation
+                $stmt = $pdo->prepare("SELECT room_id FROM reservations WHERE id = ?");
+                $stmt->execute([$reservationId]);
+                $roomId = $stmt->fetchColumn();
+                // Update reservation status
                 $stmt = $pdo->prepare("UPDATE reservations SET status = ? WHERE id = ?");
                 if ($stmt->execute([$status, $reservationId])) {
+                    // Update room availability based on status
+                    if ($roomId) {
+                        if ($status === 'confirmed') {
+                            $pdo->prepare("UPDATE rooms SET is_available = 0 WHERE id = ?")->execute([$roomId]);
+                        } else if (in_array($status, ['pending', 'completed', 'cancelled', 'paid'])) {
+                            $pdo->prepare("UPDATE rooms SET is_available = 1 WHERE id = ?")->execute([$roomId]);
+                        }
+                    }
                     $message = "Reservation status updated successfully!";
                 } else {
                     $error = "Error updating reservation status.";
@@ -24,8 +36,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             case 'delete':
                 $reservationId = $_POST['reservation_id'] ?? '';
+                // Get the room_id for this reservation
+                $stmt = $pdo->prepare("SELECT room_id FROM reservations WHERE id = ?");
+                $stmt->execute([$reservationId]);
+                $roomId = $stmt->fetchColumn();
                 $stmt = $pdo->prepare("DELETE FROM reservations WHERE id = ?");
                 if ($stmt->execute([$reservationId])) {
+                    // After deleting, check for any other confirmed reservations for this room
+                    if ($roomId) {
+                        $today = date('Y-m-d');
+                        $stmt2 = $pdo->prepare("SELECT COUNT(*) FROM reservations WHERE room_id = ? AND status = 'confirmed' AND check_out_date > ?");
+                        $stmt2->execute([$roomId, $today]);
+                        $otherConfirmed = $stmt2->fetchColumn();
+                        if ($otherConfirmed == 0) {
+                            $pdo->prepare("UPDATE rooms SET is_available = 1 WHERE id = ?")->execute([$roomId]);
+                        } else {
+                            $pdo->prepare("UPDATE rooms SET is_available = 0 WHERE id = ?")->execute([$roomId]);
+                        }
+                    }
                     $message = "Reservation deleted successfully!";
                 } else {
                     $error = "Error deleting reservation.";
@@ -103,13 +131,6 @@ $hotel = $stmt->fetch();
                         Reservations
                     </a>
                 </div>
-                <div class="nav-item">
-                    <a href="add_reservation.php" class="nav-link">
-                        <i class="fas fa-plus-circle"></i>
-                        Add Reservation
-                    </a>
-                </div>
-                
                 <div class="nav-divider"></div>
                 <div class="nav-item">
                     <a href="?logout=1" class="nav-link">

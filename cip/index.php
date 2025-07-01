@@ -7,10 +7,6 @@ $pdo = getDBConnection();
 $stmt = $pdo->query("SELECT * FROM hotel LIMIT 1");
 $hotel = $stmt->fetch();
 
-// Get total rooms
-$stmt = $pdo->query("SELECT COUNT(*) as total_rooms FROM rooms WHERE is_available = 1");
-$totalRooms = $stmt->fetch()['total_rooms'];
-
 // Get confirmed reservations
 $stmt = $pdo->query("SELECT COUNT(*) as confirmed_reservations FROM reservations WHERE status = 'confirmed'");
 $confirmedReservations = $stmt->fetch()['confirmed_reservations'];
@@ -296,10 +292,6 @@ $availableRooms = $stmt->fetch()['available_rooms'];
     <!-- Stats Section -->
     <section class="stats-section">
       <div class="stats-container">
-        <div class="stat-card">
-          <div class="stat-number"><?php echo $totalRooms; ?></div>
-          <div class="stat-label">Total Rooms</div>
-        </div>
         <div class="stat-card">
           <div class="stat-number"><?php echo $availableRooms; ?></div>
           <div class="stat-label">Available Rooms</div>

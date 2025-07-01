@@ -118,13 +118,6 @@ $hotel = $stmt->fetch();
                         Reservations
                     </a>
                 </div>
-                <div class="nav-item">
-                    <a href="add_reservation.php" class="nav-link">
-                        <i class="fas fa-plus-circle"></i>
-                        Add Reservation
-                    </a>
-                </div>
-                
                 <div class="nav-divider"></div>
                 <div class="nav-item">
                     <a href="?logout=1" class="nav-link">
@@ -175,7 +168,6 @@ $hotel = $stmt->fetch();
                                 <th>Capacity</th>
                                 <th>Price/Night</th>
                                 <th>Status</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -191,20 +183,6 @@ $hotel = $stmt->fetch();
                                     <span class="badge badge-<?php echo $room['is_available'] ? 'success' : 'danger'; ?>">
                                         <?php echo $room['is_available'] ? 'Available' : 'Occupied'; ?>
                                     </span>
-                                </td>
-                                <td>
-                                    <div class="table-actions">
-                                        <a href="?action=edit&id=<?php echo $room['id']; ?>" class="btn btn-warning btn-sm">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <form method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this room?');">
-                                            <input type="hidden" name="action" value="delete">
-                                            <input type="hidden" name="id" value="<?php echo $room['id']; ?>">
-                                            <button type="submit" class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
-                                    </div>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
