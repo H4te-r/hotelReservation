@@ -351,7 +351,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="form-group">
           <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" placeholder="Phone Number" value="<?php echo htmlspecialchars($_POST['phone'] ?? ''); ?>" />
+          <input type="tel" id="phone" name="phone" pattern="[0-9]{1,11}"  inputmode="numeric" maxlength="11" placeholder="Phone Number" value="<?php echo htmlspecialchars($_POST['phone'] ?? ''); ?>" />
         </div>
         <div class="form-group">
           <label for="check_in_date">Check-in Date</label>
