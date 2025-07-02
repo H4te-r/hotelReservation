@@ -163,13 +163,16 @@ $rooms = $stmt->fetchAll();
         }
 
         .room-image {
+            width: 100%;
             height: 250px;
-            background: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
+            overflow: hidden;
+        }
+
+        .room-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .room-info {
@@ -284,34 +287,39 @@ $rooms = $stmt->fetchAll();
     <!-- Rooms Grid -->
     <section class="rooms-container">
         <div class="rooms-grid">
-            <?php foreach ($rooms as $room): ?>
-            <div class="room-card">
-                <div class="room-image">
-                    <i class="fas fa-bed"></i>
-                </div>
-                <div class="room-info">
-                    <div class="room-name"><?php echo htmlspecialchars($room['name']); ?></div>
-                    <div class="room-description">
-                        <?php echo htmlspecialchars($room['description'] ?? 'Luxurious room with modern amenities and comfortable furnishings.'); ?>
-                    </div>
-                    <div class="room-features">
-                        <span class="feature"><?php echo $room['capacity']; ?> Guests</span>
-                        <span class="feature"><?php echo $room['size']; ?> sq ft</span>
-                        <?php if ($room['has_wifi']): ?>
-                            <span class="feature">WiFi</span>
-                        <?php endif; ?>
-                        <?php if ($room['has_tv']): ?>
-                            <span class="feature">TV</span>
-                        <?php endif; ?>
-                        <?php if ($room['has_ac']): ?>
-                            <span class="feature">AC</span>
-                        <?php endif; ?>
-                    </div>
-                    <div class="room-price">₱<?php echo number_format($room['price_per_night']); ?>/night</div>
-                    <a href="bookingform.php?room_id=<?php echo $room['id']; ?>" class="btn-book-room">Book This Room</a>
-                </div>
+        <?php 
+        foreach ($rooms as $room): ?>
+        <div class="room-card">
+            <div class="room-image">
+                <?php
+                    // Use the image_url from the database, fallback to 'default-room.jpg' if empty
+                    $roomImage = !empty($room['image_url']) ? htmlspecialchars($room['image_url']) : 'default-room.jpg';
+                ?>
+                <img src="assets/images/<?php echo $roomImage; ?>" alt="Room Image">
             </div>
-            <?php endforeach; ?>
+            <div class="room-info">
+                <div class="room-name"><?php echo htmlspecialchars($room['name']); ?></div>
+                <div class="room-description">
+                    <?php echo htmlspecialchars($room['description'] ?? 'Luxurious room with modern amenities and comfortable furnishings.'); ?>
+                </div>
+                <div class="room-features">
+                    <span class="feature"><?php echo $room['capacity']; ?> Guests</span>
+                    <span class="feature"><?php echo $room['size']; ?> sq ft</span>
+                    <?php if ($room['has_wifi']): ?>
+                        <span class="feature">WiFi</span>
+                    <?php endif; ?>
+                    <?php if ($room['has_tv']): ?>
+                        <span class="feature">TV</span>
+                    <?php endif; ?>
+                    <?php if ($room['has_ac']): ?>
+                        <span class="feature">AC</span>
+                    <?php endif; ?>
+                </div>
+                <div class="room-price">₱<?php echo number_format($room['price_per_night']); ?>/night</div>
+                <a href="bookingform.php?room_id=<?php echo $room['id']; ?>" class="btn-book-room">Book This Room</a>
+            </div>
+        </div>
+        <?php endforeach; ?>
         </div>
     </section>
 
