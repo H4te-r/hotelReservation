@@ -14,10 +14,12 @@ function login($username, $password) {
     $user = $stmt->fetch();
     
     if (!$user) {
-        // If no user found with that username
-        return 'username_wrong'; // Specific signal for username not found
+        // If no user found with that username, return 'user_not_found'
+        // This takes precedence over any password check if the user doesn't exist.
+        return 'user_not_found'; 
     }
     
+    // If user exists, verify the password
     if (password_verify($password, $user['password'])) {
         // If username is correct and password matches
         $_SESSION['admin_id'] = $user['id'];
@@ -56,14 +58,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     if ($loginResult === true) {
         header('Location: dashboard.php');
         exit();
-    } elseif ($loginResult === 'username_wrong') {
-        // Handle the case where the username was not found
-        $error = "Username is wrong.";
+    } elseif ($loginResult === 'user_not_found') {
+        // If the username was not found in the database
+        $error = "User doesn't exist."; // Display this message
     } elseif ($loginResult === 'password_wrong') {
-        // Handle the case where the username was correct but password was wrong
-        $error = "Password is wrong.";
+        // If the username was found, but the password was incorrect
+        $error = "Password is wrong."; // Display this message
     } else {
-        // Fallback for any other unexpected login result (though with current logic, this shouldn't be reached)
+        // Fallback for any other unexpected login result
         $error = "An unexpected error occurred during login.";
     }
 }
