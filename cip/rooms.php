@@ -288,14 +288,17 @@ $rooms = $stmt->fetchAll();
     <section class="rooms-container">
         <div class="rooms-grid">
         <?php 
+        $roomCounter = 1;
         foreach ($rooms as $room): ?>
         <div class="room-card">
             <div class="room-image">
                 <?php
-                    // Use the image_url from the database, fallback to 'default-room.jpg' if empty
-                    $roomImage = !empty($room['image_url']) ? htmlspecialchars($room['image_url']) : 'default-room.jpg';
+                    // Generate image filename based on room counter (room1.jpg to room15.jpg)
+                    $roomImage = 'room' . $roomCounter . '.jpg';
+                    // Ensure the counter stays within 1-15 range
+                    $roomCounter = ($roomCounter % 15) + 1;
                 ?>
-                <img src="assets/images/<?php echo $roomImage; ?>" alt="Room Image">
+                <img src="assets/images/<?php echo htmlspecialchars($roomImage); ?>" alt="<?php echo htmlspecialchars($room['name']); ?>">
             </div>
             <div class="room-info">
                 <div class="room-name"><?php echo htmlspecialchars($room['name']); ?></div>
