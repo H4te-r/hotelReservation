@@ -15,11 +15,10 @@ function login($username, $password) {
     
     if (!$user) {
         // If no user found with that username, return 'user_not_found'
-        // This takes precedence over any password check if the user doesn't exist.
         return 'user_not_found'; 
     }
-    
-    // If user exists, verify the password
+
+    // Check password, even if user exists
     if (password_verify($password, $user['password'])) {
         // If username is correct and password matches
         $_SESSION['admin_id'] = $user['id'];
@@ -29,7 +28,7 @@ function login($username, $password) {
         return true; // Login successful
     } else {
         // If username is correct but password does not match
-        return 'password_wrong'; // Specific signal for incorrect password
+        return 'password_wrong'; // Default signal for incorrect password
     }
 }
 
@@ -62,8 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         // If the username was not found in the database
         $error = "User doesn't exist."; // Display this message
     } elseif ($loginResult === 'password_wrong') {
-        // If the username was found, but the password was incorrect
+        // If the username was found, but password does not match
         $error = "Password is wrong."; // Display this message
+    } elseif ($loginResult === 'user_is_wrong') {
+        // If password matches but the user is incorrect (your additional check)
+        $error = "User is wrong."; // Display this message for the invalid user case
     } else {
         // Fallback for any other unexpected login result
         $error = "An unexpected error occurred during login.";
