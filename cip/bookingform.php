@@ -393,7 +393,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <form class="reservation-form" method="POST" action="">
         <div class="form-group">
           <label for="guest_name">Guest Name</label>
-          <input type="text" pattern="^[a-zA-Z ]*$" id="guest_name" name="guest_name" placeholder="Full Name" value="<?php echo htmlspecialchars($_POST['guest_name'] ?? ''); ?>" required />
+          <input type="text" pattern="^[a-zA-Z ]*$" id="guest_name" name="guest_name" placeholder="Full Name" maxlength="30" value="<?php echo htmlspecialchars($_POST['guest_name'] ?? ''); ?>" required />
         </div>
         <div class="form-group">
           <label for="email">Email Address</label>
